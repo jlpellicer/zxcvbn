@@ -4,8 +4,8 @@ feedback =
   default_feedback:
     warning: ''
     suggestions: [
-      "Use a few words, avoid common phrases"
-      "No need for symbols, digits, or uppercase letters"
+      "Usa varias palabras, evita frases comunes"
+      "No es necesario usar símbolos, números o letras mayúsculas"
     ]
 
   get_feedback: (score, sequence) ->
@@ -22,7 +22,7 @@ feedback =
     for match in sequence[1..]
       longest_match = match if match.token.length > longest_match.token.length
     feedback = @get_match_feedback(longest_match, sequence.length == 1)
-    extra_feedback = 'Add another word or two. Uncommon words are better.'
+    extra_feedback = 'Agrega una o dos palabras mas. Usa palabras poco comunes.'
     if feedback?
       feedback.suggestions.unshift extra_feedback
       feedback.warning = '' unless feedback.warning?
@@ -40,77 +40,77 @@ feedback =
       when 'spatial'
         layout = match.graph.toUpperCase()
         warning = if match.turns == 1
-          'Straight rows of keys are easy to guess'
+          'Filas de teclas son fáciles de adivinar'
         else
-          'Short keyboard patterns are easy to guess'
+          'Patrones cortos son fáciles de adivinar'
         warning: warning
         suggestions: [
-          'Use a longer keyboard pattern with more turns'
+          'Usa un patrón de teclas más largo'
         ]
 
       when 'repeat'
         warning = if match.base_token.length == 1
-          'Repeats like "aaa" are easy to guess'
+          'Repeticiones como "aaa" son fácils de adivinar'
         else
-          'Repeats like "abcabcabc" are only slightly harder to guess than "abc"'
+          'Repeticiones como "abcabcabc" son solo un poco mejores que "abc"'
         warning: warning
         suggestions: [
-          'Avoid repeated words and characters'
+          'Evita repetir palabras y caracteres'
         ]
 
       when 'sequence'
-        warning: "Sequences like abc or 6543 are easy to guess"
+        warning: "Secuencias como abc o 6543 son fáciles de adivinar"
         suggestions: [
-          'Avoid sequences'
+          'Evita usar secuencias'
         ]
 
       when 'regex'
         if match.regex_name == 'recent_year'
-          warning: "Recent years are easy to guess"
+          warning: "Años recientes son fáciles de adivinar"
           suggestions: [
-            'Avoid recent years'
-            'Avoid years that are associated with you'
+            'Evita usar años recientes'
+            'Evita usar años relacionados contigo'
           ]
 
       when 'date'
-        warning: "Dates are often easy to guess"
+        warning: "Las fechas son fáciles de adivinar"
         suggestions: [
-          'Avoid dates and years that are associated with you'
+          'Evita usar fechas y años relacionados contigo'
         ]
 
   get_dictionary_match_feedback: (match, is_sole_match) ->
     warning = if match.dictionary_name == 'passwords'
       if is_sole_match and not match.l33t and not match.reversed
         if match.rank <= 10
-          'This is a top-10 common password'
+          'Esta contraseña está dentro de las 10 más usadas'
         else if match.rank <= 100
-          'This is a top-100 common password'
+          'Esta contraseña está dentro de las 100 más usadas'
         else
-          'This is a very common password'
+          'Esta es una contraseña muy común'
       else if match.guesses_log10 <= 4
-        'This is similar to a commonly used password'
+        'Esta contraseña es muy parecida a las más comunes'
     else if match.dictionary_name == 'english'
       if is_sole_match
-        'A word by itself is easy to guess'
+        'Una palabra es muy fácil de adivinar'
     else if match.dictionary_name in ['surnames', 'male_names', 'female_names']
       if is_sole_match
-        'Names and surnames by themselves are easy to guess'
+        'Nombres y apellidos son muy fáciles de adivinar por si solos'
       else
-        'Common names and surnames are easy to guess'
+        'Nómbres y apellidos comunes son muy fáciles de adivinar'
     else
       ''
 
     suggestions = []
     word = match.token
     if word.match(scoring.START_UPPER)
-      suggestions.push "Capitalization doesn't help very much"
+      suggestions.push "Usar mayúsculas no mejora mucho tu contraseña"
     else if word.match(scoring.ALL_UPPER) and word.toLowerCase() != word
-      suggestions.push "All-uppercase is almost as easy to guess as all-lowercase"
+      suggestions.push "Todas mayúsculas es casi tan fácil de adivinar como en minúsculas"
 
     if match.reversed and match.token.length >= 4
-      suggestions.push "Reversed words aren't much harder to guess"
+      suggestions.push "Palabras al revés no son más difíciles de adivinar"
     if match.l33t
-      suggestions.push "Predictable substitutions like '@' instead of 'a' don't help very much"
+      suggestions.push "Sustituciones predecibles como '@' por 'a' o '1' por 'i' no mejoran mucho tu contraseña"
 
     result =
       warning: warning
