@@ -10,12 +10,14 @@ ________________________________________________________________________
 [![Build Status](https://travis-ci.org/dropbox/zxcvbn.svg?branch=master)](https://travis-ci.org/dropbox/zxcvbn)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/dropbox-zxcvbn.svg)](https://saucelabs.com/u/dropbox-zxcvbn)
 
-`zxcvbn`es un estimador de fortaleza de contraseñas inspirado en crakers de contraseñas. Reconoce y compara 30k contraseñas comunes, nombres y apellidos comunes (de acuerdo al datos del censo de EU), palabras comunes en inglés de Wikipedia, series de televisión y películas de EU y otros patrones comunes como fechas, repeticiones (`aaa`), secuencias (`abcd`), patrones de teclado (`qwer`) y _l33t speak_.
+`zxcvbn`es un estimador de fortaleza de contraseñas inspirado en crakers de contraseñas. Reconoce y compara 30k contraseñas comunes, nombres y apellidos comunes (de acuerdo a datos del censo de EU), palabras comunes en inglés de Wikipedia, series de televisión y películas de EU y otros patrones comunes como fechas, repeticiones (`aaa`), secuencias (`abcd`), patrones de teclado (`qwer`) y _l33t speak_.
 
-Considera usar zxcvbn como un algoritmo alternativo para políticas de composición de contraseñas - es más segura, flexible y usable cuando los sitios requieren una calificación de complejidad en lugar de molestar reglas como "la contraseña debe tener tres {minúsculas, mayúsculas, números y símbolos}".
+Considera usar zxcvbn como un algoritmo alternativo a las políticas de composición de contraseñas - es más segura, flexible y usable cuando los sitios requieren una calificación de complejidad en lugar de molestar reglas como "la contraseña debe tener tres {minúsculas, mayúsculas, números y símbolos}".
 
 *__Más seguro__: políticas tradicionales generalmente fallan en ambos sentidos, permitiendo contraseñas débiles y no permitiendo contraseñas más seguras.
+
 *__Más flexible__: zxcvbn permite muchos estilos de contraseñas mientras detecte que hay complejidad suficiente - frases son mejor calificadas con suficientes palabras poco comunes, filas de teclas son evaluadas basadas en la longitud y cantidad de vueltas y el uso de mayúsculas agrega complejidad cuando es impredecible.
+
 *__Más usable__: zxcvb está diseñada para permitir interfaces simples, libre de reglas que ofrece sugerencias instantáneas. Además de la estimación de fortaleza, zxcvbn incluye retroalimentación mínima y puntual que ayuda al usuario a crear una contraseña menos fácil de adivinar.
 
 
