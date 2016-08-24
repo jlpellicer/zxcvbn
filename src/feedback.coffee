@@ -50,7 +50,7 @@ feedback =
 
       when 'repeat'
         warning = if match.base_token.length == 1
-          'Repeticiones como "aaa" son fácils de adivinar'
+          'Repeticiones como "aaa" son fáciles de adivinar'
         else
           'Repeticiones como "abcabcabc" son solo un poco mejores que "abc"'
         warning: warning
