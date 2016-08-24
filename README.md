@@ -16,9 +16,9 @@ Considera usar zxcvbn como un algoritmo alternativo a las políticas de composic
 
 *__Más seguro__: políticas tradicionales generalmente fallan en ambos sentidos, permitiendo contraseñas débiles y no permitiendo contraseñas más seguras.
 
-*__Más flexible__: zxcvbn permite muchos estilos de contraseñas mientras detecte que hay complejidad suficiente - frases son mejor calificadas con suficientes palabras poco comunes, filas de teclas son evaluadas basadas en la longitud y cantidad de vueltas y el uso de mayúsculas agrega complejidad cuando es impredecible.
+*__Más flexible__: zxcvbn permite muchos estilos de contraseñas mientras detecte que hay complejidad suficiente - las frases son mejor calificadas cuando usan suficientes palabras poco comunes, filas de teclas son evaluadas basadas en la longitud y cantidad de vueltas y el uso de mayúsculas agrega complejidad cuando es impredecible.
 
-*__Más usable__: zxcvb está diseñada para permitir interfaces simples, libre de reglas que ofrece sugerencias instantáneas. Además de la estimación de fortaleza, zxcvbn incluye retroalimentación mínima y puntual que ayuda al usuario a crear una contraseña menos fácil de adivinar.
+*__Más usable__: zxcvbn está diseñada para permitir interfaces simples, libre de reglas que ofrece sugerencias instantáneas. Además de la estimación de fortaleza, zxcvbn incluye retroalimentación mínima y puntual que ayuda al usuario a crear una contraseña menos fácil de adivinar.
 
 
 At Dropbox we use zxcvbn ([Release notes](https://github.com/dropbox/zxcvbn/releases)) on our web, desktop, iOS and Android clients. If Javascript doesn't work for you, others have graciously ported the library to these languages:
