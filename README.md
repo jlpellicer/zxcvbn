@@ -10,13 +10,14 @@ ________________________________________________________________________
 [![Build Status](https://travis-ci.org/dropbox/zxcvbn.svg?branch=master)](https://travis-ci.org/dropbox/zxcvbn)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/dropbox-zxcvbn.svg)](https://saucelabs.com/u/dropbox-zxcvbn)
 
-`zxcvbn` is a password strength estimator inspired by password crackers. Through pattern matching and conservative estimation, it recognizes and weighs 30k common passwords, common names and surnames according to US census data, popular English words from Wikipedia and US television and movies, and other common patterns like dates, repeats (`aaa`), sequences (`abcd`), keyboard patterns (`qwertyuiop`), and l33t speak.
+`zxcvbn`es un estimador de fortaleza de contraseñas inspirado en crakers de contraseñas. Reconoce y compara 30k contraseñas comunes, nombres y apellidos comunes (de acuerdo al datos del censo de EU), palabras comunes en inglés de Wikipedia, series de televisión y películas de EU y otros patrones comunes como fechas, repeticiones (`aaa`), secuencias (`abcd`), patrones de teclado (`qwer`) y _l33t speak_.
 
-Consider using zxcvbn as an algorithmic alternative to password composition policy — it is more secure, flexible, and usable when sites require a minimal complexity score in place of annoying rules like "passwords must contain three of {lower, upper, numbers, symbols}".
+Considera usar zxcvbn como un algoritmo alternativo para políticas de composición de contraseñas - es más segura, flexible y usable cuando los sitios requieren una calificación de complejidad en lugar de molestar reglas como "la contraseña debe tener tres {minúsculas, mayúsculas, números y símbolos}".
 
-* __More secure__: policies often fail both ways, allowing weak passwords (`P@ssword1`) and disallowing strong passwords.
-* __More flexible__: zxcvbn allows many password styles to flourish so long as it detects sufficient complexity — passphrases are rated highly given enough uncommon words, keyboard patterns are ranked based on length and number of turns, and capitalization adds more complexity when it's unpredictaBle.
-* __More usable__: zxcvbn is designed to power simple, rule-free interfaces that give instant feedback. In addition to strength estimation, zxcvbn includes minimal, targeted verbal feedback that can help guide users towards less guessable passwords.
+*__Más seguro__: políticas tradicionales generalmente fallan en ambos sentidos, permitiendo contraseñas débiles y no permitiendo contraseñas más seguras.
+*__Más flexible__: zxcvbn permite muchos estilos de contraseñas mientras detecte que hay complejidad suficiente - frases son mejor calificadas con suficientes palabras poco comunes, filas de teclas son evaluadas basadas en la longitud y cantidad de vueltas y el uso de mayúsculas agrega complejidad cuando es impredecible.
+*__Más usable__: zxcvb está diseñada para permitir interfaces simples, libre de reglas que ofrece sugerencias instantáneas. Además de la estimación de fortaleza, zxcvbn incluye retroalimentación mínima y puntual que ayuda al usuario a crear una contraseña menos fácil de adivinar.
+
 
 At Dropbox we use zxcvbn ([Release notes](https://github.com/dropbox/zxcvbn/releases)) on our web, desktop, iOS and Android clients. If Javascript doesn't work for you, others have graciously ported the library to these languages:
 
